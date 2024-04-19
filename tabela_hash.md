@@ -21,7 +21,7 @@ Para implementar tabelas hash, precisamos de:
 
 A função hash ideal preencheria toda a tabela sem colisões. A primeira colisão aconteceria apenas quando n > T (quando a tabela estivesse cheia). O nome dessa função hash ideal é **hash universal uniforme**
 
-A função hash mais comumm segue o método da divisão:
+A função hash mais comum segue o método da divisão:
 
 ```c
 int hash(int x){
