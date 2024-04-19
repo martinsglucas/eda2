@@ -26,7 +26,7 @@ int maior(int *v, int n){
 }
 ```
 
-Dizemos que f(n) é O(g(n)) se existem constantes c e n0 tais que $ f(n) \leq c \cdot g(n)$ para todo $n \geq n0$.
+Dizemos que f(n) é O(g(n)) se existem constantes c e n0 tais que $f(n) \leq c \cdot g(n)$ para todo $n \geq n0$.
 
 A notação assintótica é uma notação matemática que descreve o comportamento de uma função quando o seu argumento tende a um valor específico ou ao infinito
 
