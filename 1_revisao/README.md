@@ -311,7 +311,7 @@ Resolver esse problema significa:
 
 ## QuickSelect
 
-O separa retorna o j. Se k=j, então já encontramos o k-ésimo menor elemento. Se $k \lt j$, então o k-ésimo menor elemento está à esquerda de j. Se $j\gt k$, então o k-ésimo menor elemento está à direita de j.
+O separa retorna o j. Se k=j, então já encontramos o k-ésimo menor elemento. Se $k \lt j$, então o k-ésimo menor elemento está à esquerda de j. Se $k\gt j$, então o k-ésimo menor elemento está à direita de j.
 
 Para encontrar o k-ésimo menor elemento:
 - Se $k \lt j$, aplico separação à esquerda
