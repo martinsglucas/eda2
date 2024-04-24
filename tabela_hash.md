@@ -1,3 +1,5 @@
+[Ir para o Sumário](./README.md)
+
 # Tabelas de Dispersão (Hashing)
 
 - Conjunto universo de tamanho S
