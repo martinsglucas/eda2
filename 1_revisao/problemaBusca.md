@@ -1,3 +1,5 @@
+[Ir para o Sumário](../README.md)
+
 # O problema de busca
 
 Consiste em determinar de um elemento x pertence ou não a um determinado conjunto
