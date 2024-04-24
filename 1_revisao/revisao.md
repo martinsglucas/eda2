@@ -1,3 +1,5 @@
+[Ir para o Sumário](../README.md)
+
 # Como medir desempenho?
 
 - algoritmo
