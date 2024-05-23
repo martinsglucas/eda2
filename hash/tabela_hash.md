@@ -1,4 +1,4 @@
-[Ir para o Sumário](./README.md)
+[Ir para o Sumário](../README.md)
 
 # Tabelas de Dispersão (Hashing)
 
