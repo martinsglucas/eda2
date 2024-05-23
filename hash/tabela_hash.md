@@ -23,7 +23,7 @@ Para implementar tabelas hash, precisamos de:
 
 A função hash ideal preencheria toda a tabela sem colisões. A primeira colisão aconteceria apenas quando n > T (quando a tabela estivesse cheia). O nome dessa função hash ideal é **hash universal uniforme**
 
-A função hash mais comumm segue o método da divisão:
+A função hash mais comum segue o método da divisão:
 
 ```c
 int hash(int x){
@@ -77,7 +77,9 @@ int busca(TH *h, int x){
         p = p->prox;
     }
     return 0;
-} // complexidade O(n/T) no caso médio. Nesse caso o símbolo da complexidade adequado é Θ(n/T) ou O(δ), onde δ é o maior número de colisões na tabela. Se esse δ for limitado, a complexidade é O(1)
+}
+// complexidade O(n/T) no caso médio. Nesse caso o símbolo da complexidade adequado é Θ(n/T) ou O(δ), onde δ é o maior número de colisões na tabela.
+// Se esse δ for limitado, a complexidade é O(1)
 ```
 
 Portanto, uma boa implementação de hash consiste em **limitar o total de colisões**. Isso pode ser feito:
@@ -144,8 +146,8 @@ int busca(int ch){
         pos = (pos + 1) % T;
     }
     if (v[pos] == ch) return 1;
+    return 0;
 }
-return 0;
 ```
 ```c
 void remove(int ch){
