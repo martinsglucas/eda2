@@ -1,4 +1,6 @@
 /*
+WRONG ANSWER
+
  * Dois professores (PA e PB) combinaram de encontrar-se no Centro Politécnico (CP) às 15h00 numa quarta-feira. Como os professores são grandes estudiosos de movimentos retilíneos uniformes, pensaram em aplicar um de seus estudos mais recentes. Os dois professores dividiram o CP em um grande quadriculado. A cada passo, cada professor escolhe uma direção (Norte, Sul, Leste ou Oeste) e anda até o quadrado imediatamente vizinho na direção escolhida. O quadriculado do CP é um plano cartesiano com origem em (1,1) como sendo o limite inferior esquerdo e as direções Norte e Sul andam no eixo Y, e as direções Leste e Oeste no eixo X. As direções Norte e Leste incrementam a posição de seus respectivos eixos e Sul e Oeste fazem o oposto. Dada uma sequência de passos, você deve dizer se os professores se encontraram em algum momento, i.e, se eles ficaram no mesmo quadrado ao mesmo tempo, se algum professor saiu do CP ou se eles não se encontraram.
  * A primeira linha da entrada contém dois inteiros N e M que indicam respectivamente o número de colunas e o número de linhas do CP
  * A segunda linha contém um inteiro P que indica quantos movimentos cada professor fez. Depois são apresentadas P linhas contendo dois números inteiros A e B, indicando a direção tomada pelos professores PA e PB, respectivamente, naquele passo. Os inteiros A e B.
