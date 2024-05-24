@@ -53,7 +53,7 @@ typedef struct {
 Ideia de uma implementação básica
 
 ```c
-tydef struct no{
+typedef struct no{
     int dado;
     struct no *prox;
 } no;
