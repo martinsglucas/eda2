@@ -7,7 +7,7 @@ Uma fila de prioridades é uma estrutura de dados que possui duas operações:
 1. Inserção
 2. Remoção do elemento de maior prioridade
 
-> Para implementação, haveriam duas possibilidades: procurar o de maior prioridade para remover (que custa O(n)) ou inserir a maior prioridade no início da fila ou topo da pilha (que custaria O(n) para calcular a posição)
+> Para implementação, haveria duas possibilidades: procurar o de maior prioridade para remover (que custa O(n)) ou inserir a maior prioridade no início da fila ou topo da pilha (que custaria O(n) para calcular a posição)
 
 Implementar fila de prioridades usando vetores ou listas encadeadas implica um custo de O(n) para alguma das duas operações acima
 
