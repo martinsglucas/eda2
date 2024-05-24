@@ -70,7 +70,7 @@ No exemplo acima, a árvore possui os níveis 0, 1, 2, 3, e 4. O nível 0 é a r
 	</tr>
 </table>
 
-A árvore é uma estrutura criada também para a resolução do [problema de busca](./1_revisao/problemaBusca.md) (para a otimização de buscas e armazenamento de dados).
+A árvore é uma estrutura criada também para a resolução do [problema de busca](../revisao/problemaBusca.md) (para a otimização de buscas e armazenamento de dados).
 
 # Árvore Binária
 
