@@ -262,12 +262,9 @@ Visam alcançar folhas o quanto antes. Há 3 tipos comuns:
 
 ### 2. Largura
 
-<!-- Visita os nós de um mesmo nível antes de descer para o próximo nível. -->
+O percurso em largura é um algoritmo que percorre a árvore nível por nível. Em uma árvore binária, isso pode ser implementado usando uma fila. 
 
-No lugar de pilha, usa-se uma fila.
-
-
-Deixada como atividade para estudar
+O algoritmo funciona adicionando a raiz à fila e, em seguida, entrando em um loop que continua até que a fila esteja vazia. Em cada iteração do loop, ele remove o nó do início da fila, imprime seu valor e adiciona seus filhos à fila.
 
 # Árvore Binária de Busca
 
