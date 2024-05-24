@@ -341,14 +341,14 @@ Inserir a chave no 9 do exemplo abaixo
 ```c
 no *insere(no *r, int y){
 	if (r == NULL){
-		no *novo = (no *) mallo16(sizeof(no));
+		no *novo = (no *) malloc(sizeof(no));
 		novo->chave = y;
 		novo->esq = novo->dir = NULL;
 		return novo;
 	}
 	else if (y < r->chave) r->esq = insere(r->esq, y);
 	else if (y > r->chave)r->dir = insere(r->dir, y);
-	/* faça o que for ne16essário com a igualdade aqui */
+	/* faça o que for necessário com a igualdade aqui */
 	/* na prática não se insere chaves duplicadas, mas faz alguma manipulação ou atualização */
 	return r;
 }
@@ -396,7 +396,7 @@ Essa árvore, percorrida em ordem, é: 0,1,4,5,8,9,10,12,13,15,16,17,18,20
 1. Encontrar o nó `v`
 2. Encontre o nó `z` que o seja maior da subárvore esquerda de `v` ou o menor da subárvore direita de `v`
 3. Troca `v`com `z` (complexidade O(1))
-	- isso 16onserva a propriedade de árvore binária de bus16a
+	- isso conserva a propriedade de árvore binária de busca
 4. Remova `v` (complexidade O(1))
 
 - Passo 1 + 2:
