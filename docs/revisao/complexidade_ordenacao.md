@@ -1,6 +1,8 @@
 [Ir para o Sumário](../README.md)
 
-# Como medir desempenho?
+# Revisão (Complexidade e Ordenação)
+
+## Como medir desempenho?
 
 - algoritmo
 - software/ programa
@@ -36,13 +38,13 @@ Também é possivel representar como um limite tendendo a infinito:
 
 lim n -> ∞ f(n)/g(n) = c
 
-## Outras notações:
+### Outras notações:
 - Ω(g(n)) - limite inferior
 - Θ(g(n)) - limite superior e inferior
 - o(g(n)) - limite estritamente inferior
 - ω(g(n)) - limite estritamente superior
 
-## g(n) clássicas
+### g(n) clássicas
 - 1: constante
 - log(n): logaritmo
 - n: linear
@@ -51,7 +53,7 @@ lim n -> ∞ f(n)/g(n) = c
 - $k^n, k \geq 2$: exponencial
     - n! fatorial também é considerado exponencial
 
-## Exemplo
+### Exemplo
 
 Suponha um computador que consuma 0,001s por operação.
 
@@ -61,7 +63,7 @@ Suponha um computador que consuma 0,001s por operação.
 32 | 0,032s | 0,16s | 1s | 33s | 46 dias
 512 | 0,512s | 9s | 4m e 22s | 1 dia e 3h | $10^{137}$ séc
 
-# Lista Encadeada
+## Lista Encadeada
 
 São uma forma de armazenar um conjunto de dados alternativa a vetores.
 
@@ -75,7 +77,7 @@ acesso direto O(1) | acesso sequencial O(n) - não indexado
 aumentar custa O(n) | aumentar custa O(1)
 diminuir custa O(n) <br> ou sub-utiliza | diminuir custa O(1)
 
-## Implementação
+### Implementação
 
 ```c
 typedef struct no{
@@ -93,7 +95,7 @@ typedef struct lista{
 
 Nó-cabeça: nó que aponta para o primeiro nó da lista
 
-# Ordenação por Intercalação (MergeSort)
+## Ordenação por Intercalação (MergeSort)
 
 Baseado na Divisão e Conquista e na recursão (bottom-up)
 
@@ -103,7 +105,7 @@ Conquista: intercale duas “metades” (cada metade deve estar ordenada)
 
 Intercalar: consiste em combinar duas listas ordenadas em uma única lista ordenada. Os elementos são comparados um a um e inseridos na nova lista na ordem correta.
 
-## Implementação
+### Implementação
 
 ```c
 // e: índice da esquerda
@@ -168,7 +170,7 @@ graph TD
 
 > Análise da complexidade no google Fotos
 
-# QuickSort (Ordenação por Partição)
+## QuickSort (Ordenação por Partição)
 
 Também baseado na Divisão e Conquista e na recursão (top-down)
 
@@ -178,7 +180,7 @@ Particionamento: escolhe um elemento (pivô) e rearranja o vetor de forma que to
 
 Dado um vetor v[e...d], queremos definir um índice j tal que v[e...j-1] <= v[j] < v[j+1...d]
 
-## Como resolver um particionamento
+### Como resolver um particionamento
 
 1. Escolher arbitrariamente um elemento do vetor (pivô)
 2. Encontrar o índice j e posicionar o pivô neste índice de tal forma que v[e...j-1] <= v[j] < v[j+1...d]
@@ -190,7 +192,7 @@ e | | j |  | | | | k | | | d
 - se v[k] > p, mantenha onde está e incrementa k
 - se v[k] <= p, troque v[k] com v[j] e incrementa j e k
 
-## Exemplo
+### Exemplo
 
 | 3 | -1 | 2 | 10 | 4 | 7 | -2 | 5
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
@@ -227,7 +229,7 @@ e | | j |  | | | | k | | | d
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 | |  |  |  |  | j |  | pk
 
-## Implementação
+### Implementação
 ```c
 void troca(int *a, int *b){
     // o * é o operador unário, faz o dereferenciamento (acessa o endereco de memoria e pega o valor armazenado nele)
@@ -280,11 +282,11 @@ graph TD
     H --> R[vazio]
 ```
 
-## Estabilidade
+### Estabilidade
 
 O quicksort não é estável, pois a ordem relativa dos elementos iguais não é preservada.
 
-### Exemplo
+#### Exemplo
 
 | $3_a$ | $3_b$ | 2 |
 |:-:|:-:|:-:|
@@ -293,17 +295,18 @@ O quicksort não é estável, pois a ordem relativa dos elementos iguais não é
 | j | | k |
 | 2 | $3_b$ | $3_a$ |
 
-### Exercício
+#### Exercício
+
 Como implementar o quicksort estável?
 
-# Problema: Como encontrar o k-ésimo menor elemento de um vetor?
+## Problema: Como encontrar o k-ésimo menor elemento de um vetor?
 
 Quando k=1, o custo é O(n)
 
 Para k=>2:
 1. Ordena, recupera o elemento na posição k (ou k-1). O custo é O(nlogn)
 
-## E se ordenarmos parcialmente?
+### E se ordenarmos parcialmente?
 
 Separa: Dado um vetor v[e...d], queremos definir um índice j tal que v[e...j-1] <= v[j] < v[j+1...d]
 
@@ -311,7 +314,7 @@ Resolver esse problema significa:
 - Encontrar a posição "correta" (no vetor ordenado) do pivô
 - Rearranja o vetor de tal forma que todos os elementos menores que o pivô fiquem à esquerda e todos os elementos maiores fiquem à direita
 
-## QuickSelect
+### QuickSelect
 
 O separa retorna o j. Se k=j, então já encontramos o k-ésimo menor elemento. Se $k \lt j$, então o k-ésimo menor elemento está à esquerda de j. Se $k\gt j$, então o k-ésimo menor elemento está à direita de j.
 
@@ -333,7 +336,7 @@ void quickselect(int *v, int e, int d, int k){
 }
 ```
 
-### Desempenho
+#### Desempenho
 
 <center>
 
@@ -350,7 +353,7 @@ $log_n$
 
 $$S = \frac{1(2^{lg_2n}-1)}{2-1} = n-1 + {\color{green}c \times log_n} = O(n)$$
 
-### Tipo de aplicação
+#### Tipo de aplicação
 
 - Listar os 100 primeiros elementos de um vetor de alunos ordenados pelo IRA:
     - Encontrar o 100º menor elemento
@@ -358,11 +361,11 @@ $$S = \frac{1(2^{lg_2n}-1)}{2-1} = n-1 + {\color{green}c \times log_n} = O(n)$$
     - Agora basta ordenar esses 100 elementos
     - É muito mais barato ordenar apenas 100 elementos do que ordenar todos os elementos
 
-# Algoritmos de Ordenação Lineares O(n)
+## Algoritmos de Ordenação Lineares O(n)
 
 Sempre partem de uma 'premissa' sobre o conjunto de dados.
 
-## Contagem (Counting Sort)  
+### Contagem (Counting Sort)  
 Premissa: todo elemento do vetor são inteiros e estão no intervalo entre a e b
 
 1. Crie um vetor auxiliar c de tamanho b-a+1 e inicialize com 0
@@ -387,10 +390,10 @@ graph TD
 
 ```
 
-### Complexidade: O(n+b-a+1)
+#### Complexidade: O(n+b-a+1)
 É vantajoso quando o tamanho do intervalo "pequeno" (neste caso, O(n))
 
-## Radix Sort (Ordenação por destribuição)
+### Radix Sort (Ordenação por destribuição)
 
 Premissa: O conjunto é formado por inteiros positivos com, no máximo, k dígitos
 
@@ -402,5 +405,6 @@ Em um exemplo de 2 dígitos, o algoritmo percorre o vetor duas vezes, uma para a
 
 É vantajoso quando k for O(log n)
 
-### Complexidade
+#### Complexidade
+
 O(nk)

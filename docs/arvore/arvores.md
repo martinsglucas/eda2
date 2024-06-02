@@ -192,6 +192,7 @@ int altura(no *raiz){
 ### Balanceamento
 
 Uma árvore é dita balanceada se:
+
 1. cada nó possui "aproximadamente" a mesma altura; ou
 2. A altura da árvore é O($logn$).
 

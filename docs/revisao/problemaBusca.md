@@ -5,6 +5,7 @@
 Consiste em determinar de um elemento x pertence ou não a um determinado conjunto
 
 Suponho que temos:
+
 - Um conjunto universo com S elementos
 - Um conjunto de dados com N elementos
 - Deseja-se realizar M consultas
@@ -44,11 +45,13 @@ int buscaBinaria(int *v, int n, int chave){
 Premissa: o conjunto precisa estar ordenado.
 
 Para realizar M consultas:
+
 1. Ordenar v O(n.log n)
 2. Aplicar M buscas binárias O(M.log n)
+
 Logo o custo total é: O(n.log n) + O(M.log n) = O((M+n).log n)
 
-> Até o momento [1](#1-busca-sequencial) compensa se m for O(1). Se m for O(log n) são similares. Demais casos, [2](#2-busca-binária) é mais rápido
+> Até o momento [1](#1-busca-sequencial) compensa se m for O(1). Se m for O(log n) são similares. Demais casos, [2](#2-busca-binaria) é mais rápido
 
 ## 3. Endereçamento direto
 

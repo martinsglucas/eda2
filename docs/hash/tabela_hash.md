@@ -85,6 +85,7 @@ int busca(TH *h, int x){
 ```
 
 Portanto, uma boa implementação de hash consiste em **limitar o total de colisões**. Isso pode ser feito:
+
 - escolhendo uma função hash ótima (pode exigir conhecimento sobre o conjunto de dados)
 - limitar as colisões na inserção (consequetemente, podemos ter tabela cheia, sendo possível redimensionar a tabela)
 
