@@ -14,6 +14,7 @@ nav:
   - Árvores: arvore/arvores.md
   - Red Black: arvore/redblack.md
   - Fila de Prioridade: arvore/filaPrioridade.md
+  - Grafos: grafos/grafos.md
   
 theme:
   name: material
