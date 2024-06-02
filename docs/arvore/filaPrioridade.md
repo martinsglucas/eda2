@@ -152,3 +152,4 @@ int extrai_maximo(Fp *fp){
     return 0;
 }
 // condição antiga do while: esq < fp->n && fp->chaves[esq] > fp->chaves[k] || dir < fp->n && fp->chaves[dir] > fp->chaves
+```

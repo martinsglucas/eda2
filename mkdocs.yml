@@ -1,0 +1,67 @@
+repo_url: https://github.com/martinsglucas/eda2
+repo_name: EDA2
+
+site_name: EDA2
+site_url: https://martinsglucas.github.io/EDA2/
+site_author: Lucas Martins
+site_description: Repositório para a disciplina Estrutura de Dados 2 2024/1
+
+nav: 
+  - Início: README.md
+  - Revisão: revisao/complexidade_ordenacao.md
+  - Problema de Busca: revisao/problemaBusca.md
+  - Tabela Hash: hash/tabela_hash.md
+  - Árvores: arvore/arvores.md
+  - Red Black: arvore/redblack.md
+  - Fila de Prioridade: arvore/filaPrioridade.md
+  
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+  palette:
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Mudar para o modo escuro
+      primary: orange
+      accent: orange
+
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Mudar para o modo claro
+      primary: orange
+      accent: orange
+
+
+  language: pt-BR
+  # logo: images/firefox.png
+  # favicon: images/firefox.png
+  extra_css: [stylesheets/extra.css]
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
+
+        
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js

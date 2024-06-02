@@ -50,7 +50,7 @@ Logo o custo total é: O(n.log n) + O(M.log n) = O((M+n).log n)
 
 > Até o momento [1](#1-busca-sequencial) compensa se m for O(1). Se m for O(log n) são similares. Demais casos, [2](#2-busca-binária) é mais rápido
 
-# 3. Endereçamento direto
+## 3. Endereçamento direto
 
 1. Uso um vetor V de 0's e 1's de tamanho S
 2. Pra cada elemento y do conjunto, marco: V[y-offset] = 1, os demais são 0.
@@ -62,7 +62,7 @@ int busca(char *v, int x){
 } // Considerando M consultas, o custo total é O(M) + O(S) de memória auxiliar
 ```
 
-# 4. Tabela de dispersão (Tabela Hash)
+## 4. Tabela de dispersão (Tabela Hash)
 
 Cada chave é mapeada em uma tabela (vetor ou lista encadeada), cuja posição é determinada por uma função de espalhamento (função hash)
 

@@ -1,7 +1,8 @@
 [Ir para o Sumário](../README.md)
 
+# Árvores
 
-# Árvore
+## Árvore
 
 São estruturas compostas por **nós** interligados entre si de tal forma que:
 
@@ -72,7 +73,7 @@ No exemplo acima, a árvore possui os níveis 0, 1, 2, 3, e 4. O nível 0 é a r
 
 A árvore é uma estrutura criada também para a resolução do [problema de busca](../revisao/problemaBusca.md) (para a otimização de buscas e armazenamento de dados).
 
-# Árvore Binária
+## Árvore Binária
 
 São árvores em que cada nó pode ter, no máximo, dois filhos.
 
@@ -127,11 +128,11 @@ no *raiz;
 ```
 
 
-## Distância
+### Distância
 
 A distância entre dois nós é a quantidade de arestas (ligações) que os unem.
 
-## Altura
+### Altura
 
 A altura de um nó é a maior distância entre este nó e uma folha da árvore. A altura da árvore é a altura da raiz.
 
@@ -188,41 +189,41 @@ int altura(no *raiz){
 // Esse algoritmo pode ser implementado de forma iterativa também, usando uma pilha (ou fila) para armazenar os nós que precisam ser visitados. Quando for para um lado, empilha o nó do outro lado.
 ```
 
-## Balanceamento
+### Balanceamento
 
 Uma árvore é dita balanceada se:
 1. cada nó possui "aproximadamente" a mesma altura; ou
 2. A altura da árvore é O($logn$).
 
 
-## Percursos em Árvores Binárias
+### Percursos em Árvores Binárias
 
-### 1. Profundidade
+#### 1. Profundidade
 
 Visam alcançar folhas o quanto antes. Há 3 tipos comuns:
 
 
 > visita: faz alguma operação
 
-#### 1.1 Pré-ordem
+##### 1.1 Pré-ordem
 
 - "visita" raiz
 - esquerda
 - direita
 
-#### 1.2 Em ordem
+##### 1.2 Em ordem
 
 - esquerda
 - "visita" raiz
 - direita
 
-#### 1.3 Pós-ordem
+##### 1.3 Pós-ordem
 
 - esquerda
 - direita
 - "visita" raiz
 
-#### Exemplo
+##### Exemplo
 
 ```mermaid
 	graph TD
@@ -260,13 +261,13 @@ Visam alcançar folhas o quanto antes. Há 3 tipos comuns:
 
 
 
-### 2. Largura
+#### 2. Largura
 
 O percurso em largura é um algoritmo que percorre a árvore nível por nível. Em uma árvore binária, isso pode ser implementado usando uma fila. 
 
 O algoritmo funciona adicionando a raiz à fila e, em seguida, entrando em um loop que continua até que a fila esteja vazia. Em cada iteração do loop, ele remove o nó do início da fila, imprime seu valor e adiciona seus filhos à fila.
 
-# Árvore Binária de Busca
+## Árvore Binária de Busca
 
 É uma árvore binária tal que, para cada nó `v` da árvore, vale que:
 
@@ -285,7 +286,7 @@ para qualquer nó `e` (respectivamente `d`) pertencente à subárvore esquerda d
 
 </center>
 
-## Busca
+### Busca
 
 ```c
 no *busca(no *r, int x){
@@ -304,7 +305,7 @@ no busca(no *r, int x){
 	return r;
 } // complexidade O(log n) para uma árvore balanceada, O(n) caso contrário
 ```
-## Inserção
+### Inserção
 
 Inserir a chave no 9 do exemplo abaixo
 
@@ -351,7 +352,7 @@ no *insere(no *r, int y){
 }
 ```
 
-## Remoção
+### Remoção
 
 <span style="color: red">vermelho: </span>elemento a ser removido<br>
 <span style="color: green">verde: </span>elementos candidatos a ocuparem o lugar do elemento removido
@@ -388,7 +389,7 @@ no *insere(no *r, int y){
 
 Essa árvore, percorrida em ordem, é: 0,1,4,5,8,9,10,12,13,15,16,17,18,20
 
-### Passos
+#### Passos
 
 1. Encontrar o nó `v`
 2. Encontre o nó `z` que o seja maior da subárvore esquerda de `v` ou o menor da subárvore direita de `v`
@@ -400,7 +401,7 @@ Essa árvore, percorrida em ordem, é: 0,1,4,5,8,9,10,12,13,15,16,17,18,20
 	- O(log n) se balanceada
 	- O(n) caso contrário 
 
-### Implementação
+#### Implementação
 
 <!-- ```c
 void troca(no *no1, no *no2){

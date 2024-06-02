@@ -8,8 +8,10 @@
 >Método entre busca sequencial e acesso direto
 
 Construir uma tabela de tamanho T < S, atentando-se para:
+
 - colisão: duas chaves ocupam a mesma posição na tabela
 - função de espalhamento: dado uma chave x, a posição na tabela será hash(x). hash: U -> {0, 1, ..., T-1}
+    
     > a função hash não é bijetora, ou seja, duas chaves distintas podem ter o mesmo hash
 
 ## Implementação
