@@ -304,13 +304,15 @@ Como implementar o quicksort estável?
 Quando k=1, o custo é O(n)
 
 Para k=>2:
-1. Ordena, recupera o elemento na posição k (ou k-1). O custo é O(nlogn)
+
+- Ordena, recupera o elemento na posição k (ou k-1). O custo é O(nlogn)
 
 ### E se ordenarmos parcialmente?
 
 Separa: Dado um vetor v[e...d], queremos definir um índice j tal que v[e...j-1] <= v[j] < v[j+1...d]
 
 Resolver esse problema significa:
+
 - Encontrar a posição "correta" (no vetor ordenado) do pivô
 - Rearranja o vetor de tal forma que todos os elementos menores que o pivô fiquem à esquerda e todos os elementos maiores fiquem à direita
 
@@ -319,6 +321,7 @@ Resolver esse problema significa:
 O separa retorna o j. Se k=j, então já encontramos o k-ésimo menor elemento. Se $k \lt j$, então o k-ésimo menor elemento está à esquerda de j. Se $k\gt j$, então o k-ésimo menor elemento está à direita de j.
 
 Para encontrar o k-ésimo menor elemento:
+
 - Se $k \lt j$, aplico separação à esquerda
 - Se $k \gt j$, aplico separação à direita
 
