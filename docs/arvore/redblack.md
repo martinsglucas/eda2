@@ -638,7 +638,7 @@ void sobeCor(no *r){
 	r->cor = VERMELHO;
 }
 no *corrige(no *r){
-	if (ehPreto(r->esq && ehVermelho(r->dir)))
+	if (ehPreto(r->esq) && ehVermelho(r->dir))
 		r = rotacaoEsquerda(r);
 	// o segundo if não tem problema de definição: caso r->esq seja NULL, já retorna Falso
 	if (ehVermelho(r->esq) && ehVermelho(r->esq->esq))
@@ -662,7 +662,7 @@ no *insere(no *r, int x){
 
 no *insere_novo(no *r, int x){
 	r = insere(r,x);
-	r->COR = PRETA;
+	r->cor = PRETO;
 	return r;
 } // pode ser que, ao final, a raiz principal tenha se tornado VERMELHA. Então fazemos isso para garantir que se manterá sempre PRETA
 
