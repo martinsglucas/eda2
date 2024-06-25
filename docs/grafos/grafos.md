@@ -7,14 +7,14 @@ Matematicamente, é um par ordenado (V,A) em que V é o conjunto de vértices e 
 
 ```mermaid
 graph TD
-    2 --> 3
-    2 --> 5
-    2 --> 1
-    3 --> 5
-    1 --> 4
-    1 --> 0
-    4 --> 5
-    4 --> 0
+    2 --- 3
+    2 --- 5
+    2 --- 1
+    3 --- 5
+    1 --- 4
+    1 --- 0
+    4 --- 5
+    4 --- 0
 ```
 
 No exemplo acima, temos um grafo com 6 vértices e 8 arestas.
@@ -33,7 +33,7 @@ Uma matriz de adjacência é uma matriz quadrada de ordem igual ao número de v�
 M[i][j] = 1 se {i,j} é uma aresta de G
 
 |       | 0 | 1 | 2 | 3 | 4 | 5 |
-|:-:    |:-:|:-:|:-:|:-:|:-:|:-:|
+|:-----:|:-:|:-:|:-:|:-:|:-:|:-:|
 | **0** |   | 1 |   |   | 1 |   |
 | **1** | 1 |   | 1 |   | 1 |   |
 | **2** |   | 1 |   | 1 |   | 1 |
@@ -120,14 +120,14 @@ Suponha o seguinte grafo
 
 ```mermaid
 graph TD
-    1 --> 2
-    1 --> 0
-    1 --> 4
-    2 --> 3
-    2 --> 5
-    4 --> 0
-    5 --> 3
-    5 --> 0
+    1 --- 2
+    1 --- 0
+    1 --- 4
+    2 --- 3
+    2 --- 5
+    4 --- 0
+    5 --- 3
+    5 --- 0
 
 ```
 
@@ -255,9 +255,9 @@ graph LR
 14 --> 15
 ```
 
-| | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **pai** | 0 | 0 | 1 | 2 | 1 | 9 | 7 | 3 | 4 | 8 | 5 | 6 | 9 | 10 | 13 | 14 |
+|         | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
+|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|:--:|:--:|:--:|:--:|
+| **pai** | 0 | 0 | 1 | 2 | 1 | 9 | 7 | 3 | 4 | 8 | 5  | 6  | 9  | 10 | 13 | 14 |
 
 ```c
 int caminhhos(grafo *g, int s){
@@ -273,7 +273,7 @@ void dfs(grafo *g, int *pai, int p, int v){
             dfs(g, pai, v, i);
         }
     }
-} // complexidade O(n), porque a cada chamada recursiva, o vértice é marcado como visitado. O(n) recursões são feitas
+} // complexidade O(n), porque a cada chamada recursiva, o vértice é marcado como visitado. O(n) recursões são feitas. Algumas literaturas consideram a complexidade O(n²)
 ```
 
 Exercício: Implementar a busca em profundidade usando pilha.
@@ -301,7 +301,125 @@ graph TD
     14 --> 15
 ```
 
-| | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **pai** | 0 | 0 | 1 | 2 | 0 | 9 | 3 | 3 | 4 | 8 | 9 | 6 | 8 | 8 | 13 | 14 |
+|         | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
+|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|:--:|:--:|:--:|:--:|
+| **pai** | 0 | 0 | 1 | 2 | 0 | 9 | 3 | 3 | 4 | 8 | 9  | 6  | 8  | 8  | 13 | 14 |
 
+```c
+int *bfs(grafo *g, int v){
+    fila *f = cria_fila();
+    int *pai = (int *) malloc(g->n * sizeof(int));
+    for (int i = 0; i < g->n; i++) pai[i] = -1;
+    pai[v] = v;
+    enfileira(f, v);
+    while (!fila_vazia(f)){
+        v = desenfileira(f);
+        for (int w = 0; w < g->n; w++){
+            if (g->adj[v][w] && pai[w] == -1){
+                pai[w] = v;
+                enfileira(f, w);
+            }
+        }
+    }
+    return pai;
+} // complexidade O(n²) ou O(|v|²), onde |v| é a cardinalidade do conjunto de vértices
+```
+## Aplicações de Percursos
+
+### Componentes Conexas
+
+```mermaid
+graph TD
+    0((0)) --- 1((1))
+    1 --- 2((2))
+    1 --- 3((3))
+    2 --- 4((4))
+    3 --- 4
+    8((8)) --- 9((9))
+    9 --- 10((10))
+    5((5)) --- 6((6))
+    6 --- 7((7))
+    6 --- 11((11))
+    7 --- 11
+    12((12))
+```
+
+Componentes conexas são subgrafos G'= (V', A') de G, onde V' é um subconjunto de V e A' é um subconjunto de A, tal que, para quaisquer u,v $\in$ V', existe um caminho entre u e v.
+
+Como descobrir quantas e quais são as componentes conexas de um grafo?
+
+```c
+
+void dfs(grafo *g, int *visitados, int comp, int v){
+    visitados[v] = comp;
+    for (int i=0; i < g->n; i++){
+        if (g->adj[v][i] && !visitados[i]){
+            dfs(g, visitados, comp, i);
+        }
+    }
+}
+
+int *comp_conexas(grafo *g){
+    int *visitados = (int *) calloc(g->n, sizeof(int));
+    int comp = 1;
+    for (int v=0; v < g->n; v++){
+        if (!visitados[v]){
+            dfs(g, visitados, comp, v);
+            comp++;
+        }
+    }
+    return visitados;
+}
+```
+
+### Ordenação Topológica
+
+Suponha que você tenha uma lista de tarefas, uma dependente da outra.
+
+```mermaid
+graph TD
+    a --> b
+    a --> c
+    b --> d
+    b --> e
+    b --> h
+    c --> b
+    c --> d
+    c --> f
+    e --> f
+    e --> g
+    d --> e
+    d --> f
+    i --> f
+    f --> g
+```
+
+> Vale observar que nessa aplicação, o grafo é digirido. Ou seja, existe uma direção da aresta, o que implica que o sentido entre um vértice e outro não necessariamente seja duplo. Na matriz de adjacência, implica que a matriz não será mais simétrica.
+
+Caso b dependesse de d, d de c e c de b, teríamos um **ciclo**
+
+- Um grafo não dirigido e sem ciclos é uma árvore
+- Um grafo dirigido e sem ciclos é um Grafo Dirigido Acíclico (DAG)
+
+```c
+void dfs(grafo *g, int visitados, int v){
+    visitados[v] = 1;
+    for (no *w = g->adj[v]; w != NULL; w = w->prox){
+        if(!visitados[w->v]){
+            dfs(g, visitados, w->v);
+        }
+    printf("%d ", v);
+    }
+}
+void ord_topologica(grafo *g){
+    int *visitados = (int *) calloc(g->n, sizeof(int));
+    for (int v=0; v < g->n; v++){ // se todas as tarefas não forem obrigatórias, esse laço não seria necessário
+        for (no *w = g->adj[v]; w != NULL; w = w->prox){
+            if (!visitados[w->v]) dfs(g, visitados, w->v);
+        }
+    }
+}
+
+```
+
+Saída: g, f, e, d, b, c, a, i
