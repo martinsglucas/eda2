@@ -43,7 +43,7 @@ M[i][j] = 1 se {i,j} é uma aresta de G
 
 >Problema da esparcidade: Se o grafo é muito esparso, a matriz de adjacência é uma matriz com muitos zeros.
 
-## Lista de Adjacência
+### Lista de Adjacência
 
 Uma lista de adjacência é uma lista de listas. Cada elemento da lista principal corresponde a um vértice do grafo. Cada elemento da lista interna corresponde a um vértice adjacente ao vértice correspondente da lista principal.
 
@@ -176,6 +176,7 @@ Dado um vértice `u`, queremos indicar conexões para `u`.
 Se `u` é adjacente à `v` e `v` é adjacente à `w`, então `w` é uma indicação de conexão de `u`.
 
 ```c
+// usando matriz de adjacência
 void imprime_recomendacoes(grafo *g, int u){
     int *rec = calloc(g->n, sizeof(int));
     for (int v=0; v < g->n; v++){
@@ -193,6 +194,24 @@ void imprime_recomendacoes(grafo *g, int u){
         }
     }
 } // complexidade O(n) ou O(delta_max) usando listas (onde delta_max é o grau máximo do grafo)
+
+// usando lista de adjacência
+void imprime_recomendacoes(grafo *g, int u){
+    int *rec = calloc(g->n, sizeof(int));
+    for (no *v = g->adj[u]->prox; v != NULL; v = v->prox){
+        for (no *w = g->adj[v->v]->prox; w != NULL; w = w->prox){
+            rec[w->v] = 1;
+        }
+        rec[v->v] = 0;
+    }
+    for (int i=0; i < g->n; i++){
+        if (rec[i]){
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+    free(rec);
+}
 ```
 
 ## Caminhos
