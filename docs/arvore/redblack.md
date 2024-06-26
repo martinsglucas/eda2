@@ -46,13 +46,22 @@
 		3 --> H[NULL]:::black
 ```
 
-Sendo `bh` a altura negra da árvore. Portanto há, no mínimo, $$2^{bh}-1$$ nós. Por outro lado, $$bh \ge \frac{h}{2}$$
+Sendo `bh` a altura negra da árvore. Portanto há, no mínimo,
+
+$$2^{bh}-1$$ 
+
+nós. Por outro lado, 
+
+$$bh \ge \frac{h}{2}$$
 
 Logo,
 
 $$n \ge 2^{bh}-1 \ge 2^{\frac{h}{2}}-1$$
+
 $$n \ge 2^{\frac{h}{2}}$$
+
 $$\log_2n \ge \frac{h}{2}$$
+
 $$h \le 2\log_2n$$
 
 ## Implementação
