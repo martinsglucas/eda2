@@ -279,12 +279,6 @@ graph LR
 | **pai** | 0 | 0 | 1 | 2 | 1 | 9 | 7 | 3 | 4 | 8 | 5  | 6  | 9  | 10 | 13 | 14 |
 
 ```c
-int caminhhos(grafo *g, int s){
-    int *pai = (int *) malloc(g->n * sizeof(int));
-    for (int i = 0; i < g->n; i++) pai[i] = -1;
-    dfs(g, pai, s, s);
-    return pai;
-}
 void dfs(grafo *g, int *pai, int p, int v){
     pai[v] = p;
     for (int i=0; i < g->n; i++){
@@ -293,6 +287,28 @@ void dfs(grafo *g, int *pai, int p, int v){
         }
     }
 } // complexidade O(n), porque a cada chamada recursiva, o vértice é marcado como visitado. O(n) recursões são feitas. Algumas literaturas consideram a complexidade O(n²)
+int *caminhos(grafo *g, int s){
+    int *pai = (int *) malloc(g->n * sizeof(int));
+    for (int i = 0; i < g->n; i++) pai[i] = -1;
+    dfs(g, pai, s, s);
+    return pai;
+}
+
+// usando lista de adjacencia
+void dfs(grafo *g, int *pai, no *p, no *v){
+    pai[v->v] = p->v;
+    for (no *w = g->adj[v->v]->prox; w != NULL; w = w->prox){
+        if (pai[w->v] == -1){
+            dfs(g, pai, v, w);
+        }
+    }
+}
+int *caminhos(grafo *g, no *s){
+    int *pai = (int *) malloc(g->n * sizeof(int));
+    for (int i = 0; i < g->n; i++) pai[i] = -1;
+    dfs(g, pai, s, s); // ou dfs(g, pai, g->adj[s], g->adj[s]) no caso de s ser um inteiro ao invés de nó
+    return pai;
+}
 ```
 
 Exercício: Implementar a busca em profundidade usando pilha.
@@ -342,6 +358,25 @@ int *bfs(grafo *g, int v){
     }
     return pai;
 } // complexidade O(n²) ou O(|v|²), onde |v| é a cardinalidade do conjunto de vértices
+
+// usando lista de adjacência
+int *bfs(grafo *g, no *v){
+    fila *f = cria_fila();
+    int *pai = (int *) malloc(g->n * sizeof(int));
+    for (int i = 0; i < g->n; i++) pai[i] = -1;
+    pai[v->v] = v->v;
+    enfileira(f, v);
+    while (!fila_vazia(f)){
+        v = desenfileira(f);
+        for (no *w = g->adj[v->v]->prox; w != NULL; w = w->prox){
+            if (pai[w->v] == -1){
+                pai[w->v] = v->v;
+                enfileira(f, w);
+            }
+        }
+    }
+    return pai;
+}
 ```
 ## Aplicações de Percursos
 
@@ -415,7 +450,7 @@ graph TD
 
 > Vale observar que nessa aplicação, o grafo é digirido. Ou seja, existe uma direção da aresta, o que implica que o sentido entre um vértice e outro não necessariamente seja duplo. Na matriz de adjacência, implica que a matriz não será mais simétrica.
 
-Caso b dependesse de d, d de c e c de b, teríamos um **ciclo**
+> Caso b dependesse de d, d de c e c de b, teríamos um **ciclo**
 
 - Um grafo não dirigido e sem ciclos é uma árvore
 - Um grafo dirigido e sem ciclos é um Grafo Dirigido Acíclico (DAG)
@@ -441,4 +476,4 @@ void ord_topologica(grafo *g){
 
 ```
 
-Saída: g, f, e, d, b, c, a, i
+Saída: g, f, e, d, h, b, c, a, i
