@@ -53,6 +53,7 @@ graph TD
 ```
 
 Dado um nó `v[i]` da árvore:
+
 - pai: `v[(i-1)/2]`
 - filho esquerdo: `v[2*i+1]`
 - filho direito: `v[2*i+2]`
